@@ -1,8 +1,10 @@
 1- Liste des clients français :
 
     SELECT customers.companyName AS "Société", customers.contactName AS "Contact", customers.contactTitle AS "Fonction", customers.phone AS "Téléphone"
-    FROM customers;
-    
+    FROM customers
+    WHERE Country = "France";
+
+
 
 2- Liste des produits vendus par le fournisseur "Exotic Liquids" :
 
