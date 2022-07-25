@@ -47,14 +47,14 @@
 
 6- Liste des pays dans lesquels des produits fournis par "Exotic Liquids" ont été livrés :
 
-    SELECT DISTINCT(customers.Country) AS "Pays"
-    FROM customers
-    JOIN orders ON customers.CustomerID = customers.CustomerID
-    JOIN `order details` ON `order details`.OrderID = orders.OrderID
-    JOIN products ON products.ProductID = `order details`.ProductID
-    JOIN suppliers ON suppliers.SupplierID = products.SupplierID
-    WHERE suppliers.CompanyName = 'Exotic Liquids'
-    ORDER BY customers.Country;
+    SELECT orders.ShipCountry AS "Pays"
+    FROM orders
+    JOIN `order details` ON orders.OrderID = `order details`.OrderID
+    JOIN products ON `order details`.ProductID = products.ProductID
+    JOIN suppliers ON products.SupplierID = suppliers.SupplierID
+    WHERE suppliers.CompanyName = "Exotic Liquids"
+    GROUP BY orders.ShipCountry
+    ORDER BY orders.shipcountry ASC;
 
 7- Chiffre daffaires global sur les ventes de 1997 :
 
